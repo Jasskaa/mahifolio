@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manheer Kaur · CV</title>
+<meta name="description" content="Currículum de Manheer Kaur — Administrativa.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --pink-50:  #FEF4F8;
+    --pink-100: #FDEAF1;
+    --pink-200: #FBD5E4;
+    --pink-300: #F6B3CD;
+    --pink-500: #EC6A9C;
+    --pink-600: #D6488A;
+    --pink-700: #B93370;
+    --pink-900: #6E1F47;
+    --ink-900: #241C21;
+    --ink-700: #3A2E35;
+    --ink-500: #6B6570;
+    --neutral-0: #FFFFFF;
+    --neutral-100: #F7F3F5;
+    --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink-700);
+    background: var(--neutral-100);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--neutral-0);
+    border-bottom: 1px solid var(--pink-200);
+  }
+  .toolbar a, .toolbar button {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 2px solid var(--pink-600);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .toolbar button { background: var(--pink-600); color: #fff; }
+  .toolbar a { background: transparent; color: var(--pink-700); }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 28px auto;
+    background: var(--neutral-0);
+    box-shadow: 0 20px 60px rgba(110,31,71,0.16);
+    display: grid;
+    grid-template-columns: 68mm 1fr;
+  }
+
+  .sidebar {
+    background: linear-gradient(165deg, var(--pink-700), var(--pink-900));
+    color: #fff;
+    padding: 14mm 10mm;
+  }
+
+  .avatar {
+    width: 26mm;
+    height: 26mm;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 22pt;
+    margin-bottom: 8mm;
+  }
+
+  .sidebar h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 17pt;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .sidebar .role {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--pink-200);
+    margin-top: 2mm;
+    margin-bottom: 10mm;
+  }
+
+  .side-block { margin-bottom: 9mm; }
+  .side-block h2 {
+    font-family: var(--font-heading);
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--pink-200);
+    margin-bottom: 4mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 2.6mm; font-size: 8.6pt; }
+  .contact-list li { display: flex; gap: 2mm; align-items: flex-start; word-break: break-word; }
+
+  .chip-list { display: flex; flex-wrap: wrap; gap: 1.6mm; }
+  .chip {
+    font-size: 7.6pt;
+    font-weight: 500;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 1.6mm 2.6mm;
+    border-radius: 999px;
+  }
+
+  .lang-row { margin-bottom: 3mm; }
+  .lang-row .lang-top { display: flex; justify-content: space-between; font-size: 8.4pt; margin-bottom: 1.2mm; }
+  .lang-row .lang-top strong { font-weight: 600; }
+  .lang-row .lang-top span { color: var(--pink-200); }
+  .bar { height: 1.6mm; border-radius: 999px; background: rgba(255,255,255,0.2); overflow: hidden; }
+  .bar-fill { height: 100%; background: #fff; border-radius: 999px; }
+
+  .main {
+    padding: 14mm 12mm;
+  }
+
+  .main h2.section-title {
+    font-family: var(--font-heading);
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--pink-700);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4mm;
+    padding-bottom: 2mm;
+    border-bottom: 2px solid var(--pink-200);
+  }
+
+  .profile-text { font-size: 9.6pt; line-height: 1.55; color: var(--ink-700); margin-bottom: 10mm; }
+
+  .entry { margin-bottom: 7mm; position: relative; padding-left: 4.5mm; border-left: 2px solid var(--pink-200); }
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: -3.1mm;
+    top: 1mm;
+    width: 4mm;
+    height: 4mm;
+    border-radius: 50%;
+    background: var(--pink-600);
+    border: 1.5px solid #fff;
+  }
+  .entry-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 2mm; }
+  .entry h3 { font-family: var(--font-heading); font-size: 10.5pt; font-weight: 700; color: var(--ink-900); }
+  .entry .period { font-size: 8pt; font-weight: 600; color: var(--pink-600); background: var(--pink-100); padding: 0.8mm 2.4mm; border-radius: 999px; white-space: nowrap; }
+  .entry .place { font-size: 9pt; color: var(--ink-500); margin-bottom: 2mm; font-weight: 500; }
+  .entry ul { list-style: none; display: flex; flex-direction: column; gap: 1.2mm; }
+  .entry li { font-size: 9pt; color: var(--ink-700); position: relative; padding-left: 3.4mm; }
+  .entry li::before { content: ''; position: absolute; left: 0; top: 1.9mm; width: 1.3mm; height: 1.3mm; border-radius: 50%; background: var(--pink-500); }
+
+  section.block { margin-bottom: 10mm; }
+
+  .page-wrap { overflow: hidden; }
+  .page { transform-origin: top left; }
+
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .page-wrap { overflow: visible; height: auto !important; }
+    .page { margin: 0; box-shadow: none; width: auto; min-height: auto; transform: none !important; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="window.print()">🖨️ Descargar / Imprimir PDF</button>
+  <a href="index.html">← Volver a la web</a>
+</div>
+
+<div class="page-wrap" id="page-wrap">
+<div class="page">
+  <aside class="sidebar">
+    <div class="avatar">MK</div>
+    <h1>Manheer Kaur</h1>
+    <p class="role">Administrativa</p>
+
+    <div class="side-block">
+      <h2>Contacto</h2>
+      <ul class="contact-list">
+        <li>📞 +34 612 41 31 62</li>
+        <li>✉️ Manheerkhangura@gmail.com</li>
+        <li>📍 C/R Osor 1, 2-1, Anglès, Girona</li>
+      </ul>
+    </div>
+
+    <div class="side-block">
+      <h2>Idiomas</h2>
+      <div class="lang-row"><div class="lang-top"><strong>Català</strong><span>Avanzado</span></div><div class="bar"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="lang-row"><div class="lang-top"><strong>Castellano</strong><span>Avanzado</span></div><div class="bar"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="lang-row"><div class="lang-top"><strong>Inglés</strong><span>Avanzado</span></div><div class="bar"><div class="bar-fill" style="width:90%"></div></div></div>
+      <div class="lang-row"><div class="lang-top"><strong>Punjabi</strong><span>Nativo</span></div><div class="bar"><div class="bar-fill" style="width:100%"></div></div></div>
+      <div class="lang-row"><div class="lang-top"><strong>Hindi</strong><span>Alto</span></div><div class="bar"><div class="bar-fill" style="width:75%"></div></div></div>
+    </div>
+
+    <div class="side-block">
+      <h2>Habilidades</h2>
+      <div class="chip-list">
+        <span class="chip">Trabajadora</span>
+        <span class="chip">Puntual</span>
+        <span class="chip">Trabajo en equipo</span>
+        <span class="chip">Comunicación</span>
+        <span class="chip">Resolución de problemas</span>
+        <span class="chip">Eficiencia</span>
+        <span class="chip">Organización</span>
+        <span class="chip">Atención al detalle</span>
+        <span class="chip">Atención al público</span>
+        <span class="chip">Facturación</span>
+        <span class="chip">Gestión de pedidos</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="block">
+      <h2 class="section-title">Perfil</h2>
+      <p class="profile-text">
+        Persona responsable, puntual y con muchas ganas de aprender, que combina el trabajo administrativo
+        con estudios de Informática para seguir creciendo profesionalmente. Experiencia en gestión
+        documental, atención al cliente y apoyo educativo, con buena capacidad de comunicación y
+        organización.
+      </p>
+    </section>
+
+    <section class="block">
+      <h2 class="section-title">Experiencia laboral</h2>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>Administrativa</h3>
+          <span class="period">Nov. 2025 — Actualidad</span>
+        </div>
+        <p class="place">Aulet · Anglès, Girona</p>
+        <ul>
+          <li>Elaboración de facturas y albaranes</li>
+          <li>Gestión de pedidos y comandas</li>
+          <li>Tareas administrativas generales de la empresa</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>Asistenta y profesora infantil</h3>
+          <span class="period">Experiencia previa</span>
+        </div>
+        <p class="place">Aula 9 · Anglès (Academia de inglés)</p>
+        <ul>
+          <li>Apoyo a profesores y alumnos: actividades educativas y preparación de material</li>
+          <li>Atención al cliente en la academia</li>
+          <li>Profesora de inglés para niños en la Escola Pompeu Fabra (extraescolares)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="section-title">Formación</h2>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>Grado Superior de Informática</h3>
+          <span class="period">2025 — 2027 · En curso</span>
+        </div>
+        <p class="place">Institut Rafael Campalans, Anglès</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>Bachillerato Tecnológico</h3>
+          <span class="period">2023 — 2025</span>
+        </div>
+        <p class="place">Institut Rafael Campalans, Anglès</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <h3>ESO</h3>
+          <span class="period">2019 — 2023</span>
+        </div>
+        <p class="place">Institut Rafael Campalans, Anglès</p>
+      </div>
+    </section>
+  </main>
+</div>
+</div>
+
+<script>
+  function fitPage() {
+    var page = document.querySelector('.page');
+    var wrap = document.getElementById('page-wrap');
+    var pageWidth = 794; // 210mm at 96dpi
+    var scale = Math.min(1, window.innerWidth / pageWidth);
+    page.style.transform = 'scale(' + scale + ')';
+    wrap.style.height = (page.offsetHeight * scale) + 'px';
+  }
+  window.addEventListener('resize', fitPage);
+  window.addEventListener('load', fitPage);
+  fitPage();
+</script>
+</body>
+</html>

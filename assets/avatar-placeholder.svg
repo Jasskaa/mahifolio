@@ -1,0 +1,53 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de perfil">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBD5E4"/>
+      <stop offset="100%" stop-color="#F4A6C6"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3A2E35"/>
+      <stop offset="100%" stop-color="#241C21"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="200" cy="200" r="200" fill="url(#bgGrad)"/>
+
+  <!-- decorative rings -->
+  <circle cx="200" cy="200" r="170" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- shoulders / top -->
+  <path d="M80 400 C80 300 140 260 200 260 C260 260 320 300 320 400 Z" fill="#C2477A"/>
+  <path d="M80 400 C80 320 130 280 160 270 C150 320 150 370 165 400 Z" fill="#AD3D6B"/>
+  <path d="M320 400 C320 320 270 280 240 270 C250 320 250 370 235 400 Z" fill="#AD3D6B"/>
+
+  <!-- neck -->
+  <rect x="178" y="205" width="44" height="60" rx="18" fill="#F2B7A0"/>
+
+  <!-- head -->
+  <ellipse cx="200" cy="170" rx="72" ry="80" fill="#F7C7B2"/>
+
+  <!-- hair back -->
+  <path d="M126 170 C120 90 150 40 200 40 C250 40 280 90 274 170 C274 130 250 110 200 110 C150 110 126 130 126 170 Z" fill="url(#hairGrad)"/>
+  <!-- hair sides -->
+  <path d="M124 150 C110 190 112 230 126 260 C132 220 128 185 138 155 Z" fill="url(#hairGrad)"/>
+  <path d="M276 150 C290 190 288 230 274 260 C268 220 272 185 262 155 Z" fill="url(#hairGrad)"/>
+  <!-- bun -->
+  <circle cx="200" cy="46" r="26" fill="url(#hairGrad)"/>
+
+  <!-- ears -->
+  <circle cx="128" cy="176" r="10" fill="#F2B7A0"/>
+  <circle cx="272" cy="176" r="10" fill="#F2B7A0"/>
+
+  <!-- face features -->
+  <ellipse cx="174" cy="170" rx="6" ry="8" fill="#3A2E35"/>
+  <ellipse cx="226" cy="170" rx="6" ry="8" fill="#3A2E35"/>
+  <path d="M162 148 Q174 138 186 148" stroke="#3A2E35" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M214 148 Q226 138 238 148" stroke="#3A2E35" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M188 210 Q200 222 212 210" stroke="#AD3D6B" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="150" cy="192" r="10" fill="#F4A6C6" opacity="0.6"/>
+  <circle cx="250" cy="192" r="10" fill="#F4A6C6" opacity="0.6"/>
+
+  <!-- earrings -->
+  <circle cx="128" cy="192" r="4" fill="#EC6A9C"/>
+  <circle cx="272" cy="192" r="4" fill="#EC6A9C"/>
+</svg>

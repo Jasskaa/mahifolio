@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="meta.title">Manheer Kaur · Administrativa</title>
+<meta name="description" data-i18n="meta.desc" content="Manheer Kaur — Administrativa. Gestión, organización y atención al cliente.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- ============ HEADER (minimal) ============ -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="#top" class="logo">M<span>.</span></a>
+
+    <div class="header-actions">
+      <div class="lang-switch" id="lang-switch" role="group" aria-label="Language">
+        <span class="lang-indicator" aria-hidden="true"></span>
+        <button type="button" data-lang="es" class="lang-btn is-active">ES</button>
+        <button type="button" data-lang="en" class="lang-btn">EN</button>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menú" aria-expanded="false" aria-controls="offcanvas-nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OFFCANVAS NAV ============ -->
+<div class="offcanvas-overlay" id="offcanvas-overlay"></div>
+<nav class="offcanvas" id="offcanvas-nav" aria-hidden="true">
+  <div class="offcanvas-links">
+    <a href="#serveis"><span class="offcanvas-num">01</span><span data-i18n="nav.services">Servicios</span></a>
+    <a href="#experiencia"><span class="offcanvas-num">02</span><span data-i18n="nav.experience">Experiencia</span></a>
+    <a href="#formacio"><span class="offcanvas-num">03</span><span data-i18n="nav.education">Formación</span></a>
+    <a href="#habilitats"><span class="offcanvas-num">04</span><span data-i18n="nav.skills">Habilidades</span></a>
+    <a href="#contacte"><span class="offcanvas-num">05</span><span data-i18n="nav.contact">Contacto</span></a>
+  </div>
+  <div class="offcanvas-footer">
+    <a href="mailto:Manheerkhangura@gmail.com">Manheerkhangura@gmail.com</a>
+    <a href="tel:+34612413162">+34 612 41 31 62</a>
+  </div>
+</nav>
+
+<!-- ============ HERO (full viewport) ============ -->
+<section class="hero" id="hero">
+  <div class="hero-name-wrap reveal">
+    <div class="blob-stage" id="blob-stage">
+      <canvas id="blob-canvas"></canvas>
+      <img id="blob-fallback" class="blob-fallback" src="assets/blob-fallback.svg" alt="" aria-hidden="true">
+    </div>
+
+    <h1 class="hero-name" aria-label="Manheer Kaur">
+      <span class="name-line">Manheer</span>
+      <span class="name-line name-line--accent">Kaur</span>
+    </h1>
+  </div>
+
+  <div class="hero-actions reveal">
+    <a href="#contacte" class="btn btn-primary"><span data-i18n="hero.ctaPrimary">Hablemos</span></a>
+    <a href="#experiencia" class="btn btn-ghost"><span data-i18n="hero.ctaGhost">Ver experiencia</span></a>
+  </div>
+
+  <a href="#serveis" class="scroll-cue">
+    <span data-i18n="hero.scroll">Scroll</span>
+    <span class="scroll-arrow" aria-hidden="true">↓</span>
+  </a>
+</section>
+
+<!-- ============ SERVEIS / ACCORDION ============ -->
+<section class="services" id="serveis">
+  <span class="ghost-text ghost-text--services" aria-hidden="true" data-i18n="services.ghost">SKILLS</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="pill-kicker" data-i18n="services.kicker">Qué aporto</p>
+      <h2 data-i18n="services.title">Áreas donde puedo ayudar</h2>
+    </div>
+
+    <div class="accordion reveal" id="services-accordion">
+      <div class="accordion-item is-open">
+        <button class="accordion-trigger" aria-expanded="true">
+          <span data-i18n="services.item1.title">Administración y gestión documental</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="services.item1.body">Preparación de documentación, control de pedidos y tareas de oficina — el pan de cada día en mi puesto actual.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span data-i18n="services.item2.title">Atención al cliente</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="services.item2.body">Trato cercano y resolutivo con clientes, estudiantes y familias, con buena comunicación y rapidez de respuesta.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span data-i18n="services.item3.title">Organización y gestión del tiempo</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="services.item3.body">Capacidad de compaginar estudios y trabajo manteniendo el orden, la puntualidad y la eficiencia en tareas repetitivas.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span data-i18n="services.item4.title">Apoyo educativo</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="services.item4.body">Experiencia dando soporte a profesores y alumnos, y planificando clases dinámicas para niños en una academia de inglés.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE MI / STATS ============ -->
+<section class="about" id="sobre-mi">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="pill-kicker" data-i18n="about.kicker">Sobre mí</p>
+      <h2 data-i18n="about.statement">Persona responsable, puntual y con muchas ganas de aprender, que combina el trabajo administrativo con estudios de Informática para seguir creciendo profesionalmente.</h2>
+    </div>
+
+    <div class="stats-row stagger">
+      <div class="stat-block reveal">
+        <span class="stat-number" data-count="5" data-suffix="">0</span>
+        <span class="stat-label" data-i18n="about.stat1">Idiomas hablados</span>
+      </div>
+      <div class="stat-block reveal">
+        <span class="stat-number" data-count="2" data-suffix="º">0</span>
+        <span class="stat-label" data-i18n="about.stat2">Curso de Grado Superior</span>
+      </div>
+      <div class="stat-block reveal">
+        <span class="stat-number" data-count="2" data-suffix="">0</span>
+        <span class="stat-label" data-i18n="about.stat3">Sectores de experiencia</span>
+      </div>
+      <div class="stat-block reveal">
+        <span class="stat-number" data-count="100" data-suffix="%">0</span>
+        <span class="stat-label" data-i18n="about.stat4">Compromiso y puntualidad</span>
+      </div>
+    </div>
+
+    <div class="about-cv reveal">
+      <a href="cv-es.html" id="cv-btn" class="btn btn-primary" target="_blank" rel="noopener">
+        <span aria-hidden="true">📄</span>
+        <span data-i18n="about.cvBtn">Ver CV</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIÈNCIA ============ -->
+<section class="experience" id="experiencia">
+  <span class="ghost-text ghost-text--work" aria-hidden="true" data-i18n="experience.ghost">WORK</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="pill-kicker" data-i18n="experience.kicker">Trayectoria</p>
+      <h2 data-i18n="experience.title">Experiencia laboral</h2>
+    </div>
+
+    <div class="job-grid stagger">
+      <article class="job-card reveal">
+        <div class="job-card-top">
+          <span class="job-icon">🧾</span>
+          <span class="job-period" data-i18n="experience.job1.period">Nov. 2025 — Actualidad</span>
+        </div>
+        <h3 data-i18n="experience.job1.role">Administrativa</h3>
+        <p class="job-company">Aulet · Anglès, Girona</p>
+        <ul>
+          <li data-i18n="experience.job1.b1">Elaboración de facturas y albaranes</li>
+          <li data-i18n="experience.job1.b2">Gestión de pedidos y comandas</li>
+          <li data-i18n="experience.job1.b3">Tareas administrativas generales de la empresa</li>
+        </ul>
+      </article>
+
+      <article class="job-card reveal">
+        <div class="job-card-top">
+          <span class="job-icon">🎓</span>
+          <span class="job-period" data-i18n="experience.job2.period">Experiencia previa</span>
+        </div>
+        <h3 data-i18n="experience.job2.role">Asistenta y profesora infantil</h3>
+        <p class="job-company">Aula 9 · Anglès (Academia de inglés)</p>
+        <ul>
+          <li data-i18n="experience.job2.b1">Apoyo a profesores y alumnos: actividades educativas y preparación de material</li>
+          <li data-i18n="experience.job2.b2">Atención al cliente en la academia</li>
+          <li data-i18n="experience.job2.b3">Profesora de inglés para niños en la Escola Pompeu Fabra (extraescolares)</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMACIÓ ============ -->
+<section class="education" id="formacio">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="pill-kicker" data-i18n="education.kicker">Aprendizaje continuo</p>
+      <h2 data-i18n="education.title">Formación</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal is-current">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-period" data-i18n="education.gs.period">2025 — 2027 · En curso (2º año)</span>
+          <h3 data-i18n="education.gs.title">Grado Superior de Informática</h3>
+          <p class="timeline-place">Institut Rafael Campalans, Anglès</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-period">2023 — 2025</span>
+          <h3 data-i18n="education.batx.title">Bachillerato Tecnológico</h3>
+          <p class="timeline-place">Institut Rafael Campalans, Anglès</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-period">2019 — 2023</span>
+          <h3 data-i18n="education.eso.title">ESO</h3>
+          <p class="timeline-place">Institut Rafael Campalans, Anglès</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HABILITATS ============ -->
+<section class="skills" id="habilitats">
+  <div class="container skills-inner">
+    <div class="reveal">
+      <p class="pill-kicker" data-i18n="skills.kicker1">Fortalezas</p>
+      <h2 data-i18n="skills.title1">Habilidades</h2>
+      <div class="chip-cloud stagger">
+        <span class="chip" data-i18n="skills.chip1">Trabajadora</span>
+        <span class="chip" data-i18n="skills.chip2">Puntual</span>
+        <span class="chip" data-i18n="skills.chip3">Trabajo en equipo</span>
+        <span class="chip" data-i18n="skills.chip4">Buena comunicación</span>
+        <span class="chip" data-i18n="skills.chip5">Resolución de problemas</span>
+        <span class="chip" data-i18n="skills.chip6">Eficiencia</span>
+        <span class="chip" data-i18n="skills.chip7">Organización</span>
+        <span class="chip" data-i18n="skills.chip8">Atención al detalle</span>
+        <span class="chip" data-i18n="skills.chip9">Buen trato con el público</span>
+        <span class="chip" data-i18n="skills.chip10">Rapidez en tareas repetitivas</span>
+        <span class="chip" data-i18n="skills.chip11">Facturación</span>
+        <span class="chip" data-i18n="skills.chip12">Gestión de pedidos</span>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="pill-kicker" data-i18n="skills.kicker2">Comunicación</p>
+      <h2 data-i18n="skills.title2">Idiomas</h2>
+      <div class="lang-bars">
+        <div class="lang-bar"><span class="lang-name">Català</span><div class="bar"><div class="bar-fill" data-width="90"></div></div><span class="lang-level" data-i18n="skills.advanced">Avanzado</span></div>
+        <div class="lang-bar"><span class="lang-name" data-i18n="skills.spanish">Castellano</span><div class="bar"><div class="bar-fill" data-width="90"></div></div><span class="lang-level" data-i18n="skills.advanced2">Avanzado</span></div>
+        <div class="lang-bar"><span class="lang-name" data-i18n="skills.english">Inglés</span><div class="bar"><div class="bar-fill" data-width="90"></div></div><span class="lang-level" data-i18n="skills.advanced3">Avanzado</span></div>
+        <div class="lang-bar"><span class="lang-name">Punjabi</span><div class="bar"><div class="bar-fill" data-width="100"></div></div><span class="lang-level" data-i18n="skills.native">Nativo</span></div>
+        <div class="lang-bar"><span class="lang-name">Hindi</span><div class="bar"><div class="bar-fill" data-width="75"></div></div><span class="lang-level" data-i18n="skills.high">Alto</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PER QUÈ JO ============ -->
+<section class="why-me">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="pill-kicker" data-i18n="why.kicker">Un plus</p>
+      <h2 data-i18n="why.title">Por qué trabajar conmigo</h2>
+    </div>
+    <div class="why-grid stagger">
+      <div class="why-card reveal">
+        <span class="why-icon">⏱️</span>
+        <h3 data-i18n="why.card1.title">Puntualidad y compromiso</h3>
+        <p data-i18n="why.card1.body">Cumplo horarios y plazos, y me tomo en serio cada tarea que se me asigna.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">⚡</span>
+        <h3 data-i18n="why.card2.title">Adaptación rápida</h3>
+        <p data-i18n="why.card2.body">Aprendo rápido herramientas y procesos nuevos, y me organizo con autonomía.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🤝</span>
+        <h3 data-i18n="why.card3.title">Trato cercano y profesional</h3>
+        <p data-i18n="why.card3.body">Buena comunicación con clientes y compañeros, con actitud positiva y resolutiva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="pill-kicker" data-i18n="faq.kicker">Preguntas y respuestas</p>
+      <h2 data-i18n="faq.title">Preguntas frecuentes</h2>
+    </div>
+
+    <div class="accordion reveal" id="faq-accordion">
+      <div class="accordion-item is-open">
+        <button class="accordion-trigger" aria-expanded="true">
+          <span data-i18n="faq.q1">¿Tienes disponibilidad para incorporarte?</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="faq.a1">Actualmente compagino los estudios con mi trabajo en Aulet, pero estoy abierta a nuevas oportunidades que se adapten a mi horario académico.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span data-i18n="faq.q2">¿Compatibilizas los estudios con el trabajo?</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="faq.a2">Sí, actualmente curso 2º de Grado Superior de Informática compatibilizándolo con mi puesto de administrativa.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span data-i18n="faq.q3">¿Qué herramientas y programas manejas?</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="faq.a3">Paquete Office (Word, Excel), herramientas de facturación y gestión de pedidos, y sigo ampliando conocimientos digitales con mi formación actual.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span data-i18n="faq.q4">¿Cómo puedo contactarte?</span>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-panel">
+          <p data-i18n="faq.a4">Por correo electrónico, teléfono o mediante el formulario de esta página — encontrarás todos los datos en la sección de contacto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTE ============ -->
+<section class="contact" id="contacte">
+  <span class="ghost-text ghost-text--contact" aria-hidden="true" data-i18n="contact.ghost">CONTACT</span>
+  <div class="container contact-inner">
+    <div class="contact-card reveal">
+      <p class="pill-kicker pill-kicker--light" data-i18n="contact.kicker">Contacto</p>
+      <h2 data-i18n="contact.title">Hablemos</h2>
+
+      <div class="contact-info">
+        <a href="tel:+34612413162">📞 +34 612 41 31 62</a>
+        <a href="mailto:Manheerkhangura@gmail.com">✉️ Manheerkhangura@gmail.com</a>
+        <span>📍 C/R Osor 1, 2-1, Anglès, Girona</span>
+      </div>
+
+      <form id="contact-form" class="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" data-i18n-placeholder="contact.name" placeholder="Nombre completo" required>
+          <input type="email" name="email" data-i18n-placeholder="contact.email" placeholder="Email" required>
+        </div>
+        <input type="text" name="subject" data-i18n-placeholder="contact.subject" placeholder="Asunto" required>
+        <textarea name="message" rows="6" data-i18n-placeholder="contact.message" placeholder="Mensaje" required></textarea>
+        <button type="submit" class="btn btn-primary"><span data-i18n="contact.send">Enviar mensaje</span></button>
+        <p class="form-note" data-i18n="contact.note">Se abrirá tu cliente de correo para enviar el mensaje.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="#top" class="logo">Manheer<span>.</span></a>
+    <p data-i18n="footer.rights">© 2026 Manheer Kaur. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="mailto:Manheerkhangura@gmail.com">Email</a>
+      <a href="tel:+34612413162" data-i18n="footer.call">Llamar</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forma decorativa">
+  <defs>
+    <radialGradient id="blobGrad" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FBD5E4"/>
+      <stop offset="55%" stop-color="#EC6A9C"/>
+      <stop offset="100%" stop-color="#B93370"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#blobGrad)" d="M100,26 C138,24 172,52 176,90 C180,130 156,168 116,176 C76,184 32,162 22,122 C12,82 34,48 68,34 C78,30 89,27 100,26 Z"/>
+</svg>
