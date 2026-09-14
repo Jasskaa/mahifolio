@@ -6,7 +6,7 @@ const translations = {
     "meta.title": "Manheer Kaur · Administrativa",
     "meta.desc": "Manheer Kaur — Administrativa. Gestión, organización y atención al cliente.",
 
-    "nav.services": "Servicios",
+    "nav.about": "Sobre mí",
     "nav.experience": "Experiencia",
     "nav.education": "Formación",
     "nav.skills": "Habilidades",
@@ -15,18 +15,6 @@ const translations = {
     "hero.ctaPrimary": "Hablemos",
     "hero.ctaGhost": "Ver experiencia",
     "hero.scroll": "Scroll",
-
-    "services.ghost": "SKILLS",
-    "services.kicker": "Qué aporto",
-    "services.title": "Áreas donde puedo ayudar",
-    "services.item1.title": "Administración y gestión documental",
-    "services.item1.body": "Preparación de documentación, control de pedidos y tareas de oficina — el pan de cada día en mi puesto actual.",
-    "services.item2.title": "Atención al cliente",
-    "services.item2.body": "Trato cercano y resolutivo con clientes, estudiantes y familias, con buena comunicación y rapidez de respuesta.",
-    "services.item3.title": "Organización y gestión del tiempo",
-    "services.item3.body": "Capacidad de compaginar estudios y trabajo manteniendo el orden, la puntualidad y la eficiencia en tareas repetitivas.",
-    "services.item4.title": "Apoyo educativo",
-    "services.item4.body": "Experiencia dando soporte a profesores y alumnos, y planificando clases dinámicas para niños en una academia de inglés.",
 
     "about.kicker": "Sobre mí",
     "about.statement": "Persona responsable, puntual y con muchas ganas de aprender, que combina el trabajo administrativo con estudios de Informática para seguir creciendo profesionalmente.",
@@ -119,7 +107,7 @@ const translations = {
     "meta.title": "Manheer Kaur · Administrative Assistant",
     "meta.desc": "Manheer Kaur — Administrative Assistant. Organization, management and customer care.",
 
-    "nav.services": "Services",
+    "nav.about": "About me",
     "nav.experience": "Experience",
     "nav.education": "Education",
     "nav.skills": "Skills",
@@ -128,18 +116,6 @@ const translations = {
     "hero.ctaPrimary": "Let's talk",
     "hero.ctaGhost": "See experience",
     "hero.scroll": "Scroll",
-
-    "services.ghost": "SKILLS",
-    "services.kicker": "What I bring",
-    "services.title": "Where I can help",
-    "services.item1.title": "Administration & document management",
-    "services.item1.body": "Preparing documents, tracking orders and everyday office tasks — the bread and butter of my current role.",
-    "services.item2.title": "Customer care",
-    "services.item2.body": "Warm, resourceful interaction with clients, students and families, with clear communication and quick responses.",
-    "services.item3.title": "Organization & time management",
-    "services.item3.body": "Able to balance studies and work while staying organized, punctual and efficient with repetitive tasks.",
-    "services.item4.title": "Educational support",
-    "services.item4.body": "Experience supporting teachers and students, and planning engaging lessons for children at an English academy.",
 
     "about.kicker": "About me",
     "about.statement": "A responsible, punctual person eager to learn, combining administrative work with Computer Science studies to keep growing professionally.",
@@ -265,7 +241,11 @@ function applyLanguage(lang) {
   if (switchEl) switchEl.classList.toggle("lang-en", lang === "en");
 
   const cvBtn = document.getElementById("cv-btn");
-  if (cvBtn) cvBtn.setAttribute("href", lang === "en" ? "cv-en.html" : "cv-es.html");
+  if (cvBtn) {
+    cvBtn.setAttribute("href", lang === "en" ? "cv-en.html" : "cv-es.html");
+    cvBtn.setAttribute("data-pdf", lang === "en" ? "assets/cv-en.pdf" : "assets/cv-es.pdf");
+    cvBtn.setAttribute("data-pdf-name", lang === "en" ? "Manheer-Kaur-CV-EN.pdf" : "Manheer-Kaur-CV-ES.pdf");
+  }
 
   try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
 }
@@ -281,6 +261,28 @@ function initLanguage() {
 }
 
 initLanguage();
+
+// ================================================================
+// "Ver CV" button — on mobile it downloads the PDF directly; on
+// desktop it keeps opening the styled HTML preview in a new tab.
+// ================================================================
+const cvBtnEl = document.getElementById("cv-btn");
+if (cvBtnEl) {
+  cvBtnEl.addEventListener("click", (e) => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (!isMobile) return; // desktop: let the normal link open the preview
+
+    e.preventDefault();
+    const pdfUrl = cvBtnEl.getAttribute("data-pdf") || "assets/cv-es.pdf";
+    const pdfName = cvBtnEl.getAttribute("data-pdf-name") || "Manheer-Kaur-CV.pdf";
+    const a = document.createElement("a");
+    a.href = pdfUrl;
+    a.download = pdfName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
+}
 
 // ================================================================
 // Smooth-scroll for internal anchor links (JS-driven, not CSS)
@@ -356,7 +358,7 @@ window.addEventListener("scroll", () => {
 onScrollFrame();
 
 // ================================================================
-// Accordions (services + FAQ)
+// Accordions (FAQ)
 // ================================================================
 document.querySelectorAll(".accordion").forEach((accordion) => {
   accordion.querySelectorAll(".accordion-trigger").forEach((trigger) => {
@@ -463,34 +465,4 @@ if (contactForm) {
 
     window.location.href = mailto;
   });
-}
-
-// ================================================================
-// 3D blob — lazy-loaded (Three.js via CDN), lives only in the Hero
-// Skips entirely for prefers-reduced-motion: the static SVG fallback
-// (assets/blob-fallback.svg) stays visible permanently in that case.
-// ================================================================
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    const s = document.createElement("script");
-    s.src = src;
-    s.onload = resolve;
-    s.onerror = reject;
-    document.head.appendChild(s);
-  });
-}
-
-function bootBlob() {
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion) return; // keep the static fallback only
-
-  loadScript("https://unpkg.com/three@0.160.0/build/three.min.js")
-    .then(() => loadScript("blob.js"))
-    .catch(() => { /* network hiccup: static fallback stays visible */ });
-}
-
-if (document.readyState === "complete") {
-  setTimeout(bootBlob, 200);
-} else {
-  window.addEventListener("load", () => setTimeout(bootBlob, 200));
 }

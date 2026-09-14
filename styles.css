@@ -105,7 +105,6 @@ section { position: relative; overflow: hidden; }
   line-height: 1;
   animation: driftGhost 22s ease-in-out infinite;
 }
-.ghost-text--services{ bottom: -6%; right: -2%; }
 .ghost-text--work     { top: -4%; left: -2%; }
 .ghost-text--contact  { bottom: -10%; left: 50%; transform: translateX(-50%); }
 
@@ -314,51 +313,9 @@ section { position: relative; overflow: hidden; }
 .offcanvas-footer { display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: var(--ink-500); }
 .offcanvas-footer a:hover { color: var(--pink-600); }
 
-/* ============ 3D liquid blob (Hero only, behind the name) ============ */
-.blob-stage {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(340px, 45vw, 600px);
-  aspect-ratio: 1 / 1;
-  z-index: 0;
-  pointer-events: auto;
-  cursor: grab;
-}
-.blob-stage.is-grabbing { cursor: grabbing; }
-
-.blob-stage canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-.blob-stage.is-loaded canvas { opacity: 1; }
-.blob-stage.is-loaded .blob-fallback { opacity: 0; }
-
-.blob-fallback {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 30px 45px rgba(185, 51, 112, 0.38));
-  transition: opacity 0.6s ease;
-  animation: floatY 5s ease-in-out infinite;
-}
-
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@media (max-width: 720px) {
-  .blob-stage { width: clamp(200px, 55vw, 320px); }
-}
-
 /* ============ Hero (full viewport) ============ */
 .hero {
+  position: relative;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -370,12 +327,24 @@ section { position: relative; overflow: hidden; }
   background: radial-gradient(circle at 50% 0%, var(--pink-100) 0%, transparent 60%), var(--neutral-50);
 }
 
+/* Particle field — fills the Hero, behind the name, never intercepts
+   clicks (pointer-events stays off; the JS tracks the mouse on .hero
+   itself instead) */
+.particles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .hero-name-wrap { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 1; }
 
 .hero-name {
   position: relative;
   z-index: 1;
-  pointer-events: none; /* let hover/click pass through to the blob behind it */
+  pointer-events: none; /* the particle canvas tracks the mouse on .hero directly */
   font-size: clamp(3.6rem, 15vw, 11.5rem);
   font-weight: 800;
   line-height: 0.86;
@@ -431,9 +400,7 @@ section { position: relative; overflow: hidden; }
 .pill-kicker.center { display: block; width: fit-content; margin-left: auto; margin-right: auto; }
 .pill-kicker--light { background: rgba(255,255,255,0.15); color: var(--neutral-0); }
 
-/* ============ Services / Accordion ============ */
-.services { padding: 90px 0; background: var(--neutral-0); }
-
+/* ============ Accordion (used by FAQ) ============ */
 .accordion { border-top: 1px solid var(--neutral-200); }
 .accordion-item { border-bottom: 1px solid var(--neutral-200); }
 
