@@ -14,7 +14,6 @@ const translations = {
 
     "hero.ctaPrimary": "Hablemos",
     "hero.ctaGhost": "Ver experiencia",
-    "hero.scroll": "Scroll",
 
     "about.kicker": "Sobre mí",
     "about.statement": "Persona responsable, puntual y con muchas ganas de aprender, que combina el trabajo administrativo con estudios de Informática para seguir creciendo profesionalmente.",
@@ -115,7 +114,6 @@ const translations = {
 
     "hero.ctaPrimary": "Let's talk",
     "hero.ctaGhost": "See experience",
-    "hero.scroll": "Scroll",
 
     "about.kicker": "About me",
     "about.statement": "A responsible, punctual person eager to learn, combining administrative work with Computer Science studies to keep growing professionally.",

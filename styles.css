@@ -320,32 +320,20 @@ section { position: relative; overflow: hidden; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 30px;
+  justify-content: flex-start;
+  gap: 18px;
   text-align: center;
-  padding: 120px 20px 60px;
+  padding: 108px 20px 0;
   background: radial-gradient(circle at 50% 0%, var(--pink-100) 0%, transparent 60%), var(--neutral-50);
+  overflow: hidden;
 }
 
-/* Particle field — fills the Hero, behind the name, never intercepts
-   clicks (pointer-events stays off; the JS tracks the mouse on .hero
-   itself instead) */
-.particles-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero-name-wrap { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+.hero-name-wrap { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 2; pointer-events: none; }
 
 .hero-name {
   position: relative;
-  z-index: 1;
-  pointer-events: none; /* the particle canvas tracks the mouse on .hero directly */
-  font-size: clamp(3.6rem, 15vw, 11.5rem);
+  z-index: 2;
+  font-size: clamp(2.8rem, 12vw, 11.5rem);
   font-weight: 800;
   line-height: 0.86;
   letter-spacing: -0.03em;
@@ -355,29 +343,55 @@ section { position: relative; overflow: hidden; }
 .name-line { display: block; }
 .name-line--accent { color: var(--pink-500); }
 
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; z-index: 1; }
+/* Desktop: no CTA row in the Hero (mobile-only, see breakpoint below) */
+.hero-actions { display: none; position: relative; z-index: 2; }
 
-.scroll-cue {
+/* Particle canvas covers the whole Hero (so the "magnetized" scatter can
+   roam across the full header) — the particles' resting shape is just a
+   portrait-sized cluster near the bottom, computed in JS. Desktop only —
+   hidden on mobile, see breakpoint below. */
+.particles-canvas {
   position: absolute;
-  bottom: 36px;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: auto;
+}
+.hero.is-loaded .particles-canvas { opacity: 1; }
+.hero.is-loaded .particles-fallback { opacity: 0; }
+
+.particles-fallback {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-500);
-  transition: color 0.3s ease;
+  width: min(560px, 42%);
+  aspect-ratio: 420 / 418;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
 }
-.scroll-cue:hover { color: var(--pink-600); }
-.scroll-arrow { font-size: 1.1rem; animation: bounceArrow 1.8s ease-in-out infinite; }
-@keyframes bounceArrow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+
+/* Soft neutral backdrop so light particle colors (skin highlights, etc.)
+   stay readable instead of washing out into the pink page background */
+.hero-portrait-glow {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(560px, 42%);
+  aspect-ratio: 420 / 418;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 55%, transparent 78%);
+  filter: blur(2px);
 }
 
 /* ============ Section head (shared) ============ */
@@ -633,23 +647,46 @@ section { position: relative; overflow: hidden; }
   .why-grid { grid-template-columns: 1fr; }
   .contact-inner { justify-content: center; }
   .stats-row { grid-template-columns: repeat(2, 1fr); row-gap: 30px; }
-  .hero-name-wrap { margin-top: 20px; }
 }
 
+/* ---- Mobile Hero: back to the simple full-height centered layout —
+   name + CTAs, no particle portrait (too heavy/busy at this size) ---- */
 @media (max-width: 720px) {
   .form-row { grid-template-columns: 1fr; }
   .lang-bar { grid-template-columns: 70px 1fr 70px; }
-  .hero { padding-top: 140px; gap: 22px; }
   .offcanvas { padding: 100px 32px 32px; }
+
+  .hero {
+    min-height: 100svh;
+    justify-content: center;
+    padding: 100px 20px 60px;
+    gap: 26px;
+  }
+  .hero-name-wrap { margin-top: 0; }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    max-width: none;
+  }
+  .particles-canvas, .particles-fallback, .hero-portrait-glow { display: none; }
+
+  .about, .experience, .education, .skills, .why-me, .faq, .contact {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  .section-head { margin-bottom: 28px; }
+  .stats-row { margin-top: 28px; }
 }
 
 @media (max-width: 480px) {
   .ghost-text { display: none; }
+  .hero-name { font-size: clamp(2.5rem, 14vw, 3.4rem); }
 }
 
 /* ============ Reduced motion ============ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .ghost-text, .scroll-arrow { animation: none; }
+  .ghost-text { animation: none; }
   .reveal { transition: none; opacity: 1; transform: none; }
 }
